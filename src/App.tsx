@@ -457,19 +457,19 @@ export default function App() {
         </div>
       </header>
 
-      <div className="flex flex-col lg:flex-row gap-6 h-full flex-1 overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-6 h-full flex-1 overflow-hidden min-h-0">
         {/* Left Sidebar - Diagnostics */}
-        <aside className="flex flex-col gap-4 w-full lg:w-72 order-2 lg:order-1">
-          <section className="neural-panel neural-border-cyan p-5 h-fit relative overflow-hidden group">
+        <aside className="flex flex-col gap-2 w-full lg:w-72 order-2 lg:order-1 h-full overflow-hidden">
+          <section className="neural-panel neural-border-cyan p-4 py-6 relative overflow-hidden group flex-none">
              <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity"><BarChart size={24} /></div>
              <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black">Performance_Yield</span>
              <div className="text-3xl font-black text-white mt-1 flex items-center gap-3">
-                <span className="min-w-[1.5em]">{((gameState.bankroll / INITIAL_BANKROLL - 1) * 100).toFixed(1)}%</span>
+                <span className="min-w-[1.5em] whitespace-nowrap">{((gameState.bankroll / INITIAL_BANKROLL - 1) * 100).toFixed(1)}%</span>
                 <span className={cn("text-[10px] uppercase font-black px-2 py-0.5 rounded bg-black/40 border border-white/5", gameState.bankroll >= INITIAL_BANKROLL ? "text-green-500" : "text-neural-pink")}>
                    {gameState.bankroll >= INITIAL_BANKROLL ? 'POSITIVE' : 'NEGATIVE'}
                 </span>
              </div>
-             <div className="mt-4 flex flex-col gap-2">
+             <div className="mt-6 flex flex-col gap-3">
                 <div className="flex justify-between text-[10px] text-neural-dim uppercase tracking-tighter">
                     <span>Session_Net</span>
                     <span className={cn("font-black", gameState.bankroll >= INITIAL_BANKROLL ? "text-green-400" : "text-neural-pink")}>
@@ -485,7 +485,7 @@ export default function App() {
           </section>
 
           {/* Neural Analytics - Upgraded for V4 */}
-          <section className="neural-panel border-neural-accent/40 bg-neural-accent/5 p-6 flex flex-col gap-6">
+          <section className="neural-panel border-neural-accent/40 bg-neural-accent/5 p-4 flex flex-col gap-4 flex-1 overflow-hidden">
              <div className="flex justify-between items-center px-1">
                 <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black italic">Cognitive_Accuracy</span>
                 <Activity size={14} className="text-neural-cyan animate-pulse" />
@@ -519,8 +519,8 @@ export default function App() {
                                 <div className="w-full h-2 bg-black/50 rounded-full overflow-hidden border border-white/5">
                                     <motion.div initial={{ width: 0 }} animate={{ width: `${perc}%` }} transition={{ duration: 1.725, ease: "easeOut" }} className={cn("h-full bg-current shadow-[0_0_10px_rgba(255,255,255,0.15)]", s.color)} />
                                 </div>
-                                <div className="flex justify-end mt-1">
-                                    <span className="text-[8px] text-neural-dim/60 font-black italic tracking-tighter uppercase">{s.correct} / {s.total} LOCKS_VERIFIED</span>
+                                <div className="flex justify-end mt-0.5">
+                                    <span className="text-[7px] text-neural-dim/60 font-black italic tracking-tighter uppercase">{s.correct} / {s.total} LOCKS_VERIFIED</span>
                                 </div>
                             </div>
                         );
@@ -530,7 +530,7 @@ export default function App() {
           </section>
 
           {/* Phase 4: Diagnostic Node (Counting Display) */}
-          <section className="neural-panel border-neural-dim/30 bg-black/20 p-5 flex flex-col gap-4">
+          <section className="neural-panel border-neural-dim/30 bg-black/20 p-3 flex flex-col gap-2 flex-none">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black">Diagnostic_Data</span>
                 <button 
@@ -772,9 +772,9 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <aside className="w-full lg:w-80 order-3 flex flex-col gap-4 h-full">
+        <aside className="w-full lg:w-80 order-3 flex flex-col gap-4 h-full overflow-y-auto custom-scrollbar pr-1 min-h-0 pb-6">
            {/* New Enlarged Metrics Card */}
-           <section className="neural-panel neural-border-cyan p-6 bg-black/60 relative overflow-hidden group">
+           <section className="neural-panel neural-border-cyan p-6 bg-black/60 relative overflow-hidden group flex-shrink-0">
               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity"><Wallet size={24} /></div>
               
               <div className="flex flex-col gap-6">
@@ -824,7 +824,7 @@ export default function App() {
               </div>
            </section>
 
-           <section className="neural-panel flex-1 flex flex-col bg-black/40 backdrop-blur-md border-neural-border/10 overflow-hidden">
+           <section className="neural-panel flex-1 flex flex-col bg-black/40 backdrop-blur-md border-neural-border/10 overflow-hidden flex-shrink-0 min-h-fit">
               <div className="flex items-center justify-between mb-0 p-6 border-b border-neural-border/20 bg-black/40">
                  <span className="text-[11px] uppercase text-neural-dim flex items-center gap-3 tracking-[0.4em] font-black">
                     <History size={16} className="text-neural-cyan" /> FILE_BUFFER
