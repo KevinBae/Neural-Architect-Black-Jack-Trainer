@@ -2,7 +2,7 @@
 
 A high-fidelity, professional-grade Blackjack training environment with a "Neural/Cyber" aesthetic. Designed to hone your decision-making and card-counting skills using real-time diagnostics and optimal strategy heuristics.
 
-![Neural Architect Preview](public/preview.png) *(Note: Add a screenshot here)*
+![Neural Architect Black Jack Trainer](https://kevinbae.github.io/Neural-Architect-Black-Jack-Trainer/)
 
 ## 🚀 Features
 
