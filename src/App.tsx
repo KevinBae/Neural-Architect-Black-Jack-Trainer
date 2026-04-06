@@ -463,9 +463,9 @@ export default function App() {
           <section className="neural-panel neural-border-cyan p-5 h-fit relative overflow-hidden group">
              <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity"><BarChart size={24} /></div>
              <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black">Performance_Yield</span>
-             <div className="text-3xl font-black text-white mt-1 flex items-baseline gap-2">
-                {((gameState.bankroll / INITIAL_BANKROLL - 1) * 100).toFixed(1)}%
-                <span className={cn("text-[10px] uppercase font-black", gameState.bankroll >= INITIAL_BANKROLL ? "text-green-500" : "text-neural-pink")}>
+             <div className="text-3xl font-black text-white mt-1 flex items-center gap-3">
+                <span className="min-w-[1.5em]">{((gameState.bankroll / INITIAL_BANKROLL - 1) * 100).toFixed(1)}%</span>
+                <span className={cn("text-[10px] uppercase font-black px-2 py-0.5 rounded bg-black/40 border border-white/5", gameState.bankroll >= INITIAL_BANKROLL ? "text-green-500" : "text-neural-pink")}>
                    {gameState.bankroll >= INITIAL_BANKROLL ? 'POSITIVE' : 'NEGATIVE'}
                 </span>
              </div>
