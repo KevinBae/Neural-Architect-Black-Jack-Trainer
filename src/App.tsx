@@ -459,8 +459,8 @@ export default function App() {
 
       <div className="flex flex-col lg:flex-row gap-6 h-full flex-1 overflow-hidden min-h-0">
         {/* Left Sidebar - Diagnostics */}
-        <aside className="flex flex-col gap-2 w-full lg:w-72 order-2 lg:order-1 h-full overflow-hidden">
-          <section className="neural-panel neural-border-cyan p-4 py-6 relative overflow-hidden group flex-none">
+        <aside className="flex flex-col gap-6 w-full lg:w-72 order-2 lg:order-1 h-full overflow-hidden">
+          <section className="neural-panel neural-border-cyan p-4 py-4 relative overflow-hidden group flex-none">
              <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity"><BarChart size={24} /></div>
              <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black">Performance_Yield</span>
              <div className="text-3xl font-black text-white mt-1 flex items-center gap-3">
@@ -469,7 +469,7 @@ export default function App() {
                    {gameState.bankroll >= INITIAL_BANKROLL ? 'POSITIVE' : 'NEGATIVE'}
                 </span>
              </div>
-             <div className="mt-6 flex flex-col gap-3">
+             <div className="mt-4 flex flex-col gap-2">
                 <div className="flex justify-between text-[10px] text-neural-dim uppercase tracking-tighter">
                     <span>Session_Net</span>
                     <span className={cn("font-black", gameState.bankroll >= INITIAL_BANKROLL ? "text-green-400" : "text-neural-pink")}>
@@ -485,13 +485,13 @@ export default function App() {
           </section>
 
           {/* Neural Analytics - Upgraded for V4 */}
-          <section className="neural-panel border-neural-accent/40 bg-neural-accent/5 p-4 flex flex-col gap-4 flex-1 overflow-hidden">
+          <section className="neural-panel border-neural-accent/40 bg-neural-accent/5 p-4 flex flex-col gap-2 flex-none overflow-hidden">
              <div className="flex justify-between items-center px-1">
                 <span className="text-[10px] text-neural-dim uppercase tracking-[0.2em] font-black italic">Cognitive_Accuracy</span>
                 <Activity size={14} className="text-neural-cyan animate-pulse" />
              </div>
              
-             <div className="flex flex-col gap-8 items-center py-4">
+             <div className="flex flex-col gap-4 items-center py-2">
                 <div className="relative w-40 h-40 flex items-center justify-center shrink-0">
                     <svg className="w-full h-full transform -rotate-90">
                         <circle cx="80" cy="80" r="74" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-neural-border/10" />
@@ -503,7 +503,7 @@ export default function App() {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-5 w-full px-2">
+                <div className="flex flex-col gap-3 w-full px-2">
                     {[
                         { label: 'HARD', ...gameState.categoryStats.hard, color: 'text-white' },
                         { label: 'SOFT', ...gameState.categoryStats.soft, color: 'text-neural-cyan' },
@@ -512,15 +512,15 @@ export default function App() {
                         const perc = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
                         return (
                             <div key={s.label} className="w-full">
-                                <div className="flex justify-between text-xs font-black mb-2 tracking-wider">
-                                    <span className="text-neural-dim">{s.label}_SYMBOLS</span>
-                                    <span className={cn("glow-text-tiny", s.color)}>{perc}%</span>
+                                <div className="flex justify-between text-[8px] font-black mb-1 tracking-widest opacity-60">
+                                    <span className="text-neural-dim">{s.label}_MODULE</span>
+                                    <span className="text-neural-dim/60 italic uppercase tracking-tighter">{s.correct} / {s.total} SYNCED</span>
                                 </div>
-                                <div className="w-full h-2 bg-black/50 rounded-full overflow-hidden border border-white/5">
-                                    <motion.div initial={{ width: 0 }} animate={{ width: `${perc}%` }} transition={{ duration: 1.725, ease: "easeOut" }} className={cn("h-full bg-current shadow-[0_0_10px_rgba(255,255,255,0.15)]", s.color)} />
-                                </div>
-                                <div className="flex justify-end mt-0.5">
-                                    <span className="text-[7px] text-neural-dim/60 font-black italic tracking-tighter uppercase">{s.correct} / {s.total} LOCKS_VERIFIED</span>
+                                <div className="flex items-center gap-3">
+                                    <div className="flex-1 h-2 bg-black/50 rounded-full overflow-hidden border border-white/5 relative">
+                                        <motion.div initial={{ width: 0 }} animate={{ width: `${perc}%` }} transition={{ duration: 1.725, ease: "easeOut" }} className={cn("h-full bg-current shadow-[0_0_10px_rgba(255,255,255,0.15)]", s.color)} />
+                                    </div>
+                                    <span className={cn("text-[10px] font-black min-w-[32px] text-right", s.color)}>{perc}%</span>
                                 </div>
                             </div>
                         );
